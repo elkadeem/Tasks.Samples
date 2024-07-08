@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks.Sample", "Tasks.Sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainTasks.Samples", "ChainTasks.Samples\ChainTasks.Samples.csproj", "{EB6DAC18-8FA5-4DB8-BE65-0BC836B4E45B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait.Sample", "AsyncAwait.Sample\AsyncAwait.Sample.csproj", "{6CEBE826-D075-4317-ACAB-DCBD2E4877FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EB6DAC18-8FA5-4DB8-BE65-0BC836B4E45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB6DAC18-8FA5-4DB8-BE65-0BC836B4E45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB6DAC18-8FA5-4DB8-BE65-0BC836B4E45B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CEBE826-D075-4317-ACAB-DCBD2E4877FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CEBE826-D075-4317-ACAB-DCBD2E4877FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CEBE826-D075-4317-ACAB-DCBD2E4877FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CEBE826-D075-4317-ACAB-DCBD2E4877FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
