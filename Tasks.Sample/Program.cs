@@ -4,8 +4,53 @@ namespace Tasks.Sample
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+
+            try
+            {
+
+            
+
+            var task1 = Task.Run(() => {
+                Task.Delay(5000).Wait();
+                throw new InvalidOperationException();
+            });
+
+            var task2 = Task.Run(() => {
+                Task.Delay(20000).Wait();
+                Console.WriteLine("Task 2 completed");
+            });
+
+            var task3 = Task.Run(() => {
+                Task.Delay(30000).Wait();
+                Console.WriteLine("Task 2 completed");
+            });
+
+            //Task.WaitAll(task1, task2, task3);
+            await Task.WhenAll(task1, task2, task3);
+
+            }
+            catch (AggregateException ex)
+            {
+                Console.WriteLine("exception handler");
+            }
+
+            // Pass by value
+            //int x = 10;
+            //DoubleNumber(x);
+            //Console.WriteLine(x);
+
+            // Pass by ref
+            //CustomData customData = new CustomData() { 
+            //     CreationTime = 10L,
+            //     Name = 1,
+            //     ThreadNum = 2
+            //};
+
+            //DoubleNumber(customData);
+            //Console.WriteLine(customData.ThreadNum);
+
             //Sample1();
 
             //Sample2();
@@ -19,7 +64,7 @@ namespace Tasks.Sample
 
             //FixIssueInSample5();
 
-            //UseAsyncStateSample5();
+            UseAsyncStateSample5();
 
             //TheadCultureSample();
 
@@ -30,6 +75,19 @@ namespace Tasks.Sample
             //InnerTaskSample();
 
             //InnerTaskWithAttachToParent();
+        }
+
+        // Pass by value
+        private static void DoubleNumber(int x)
+        {
+            x = x * 2;
+        }
+
+        // Pass by value
+        private static void DoubleNumber(CustomData customData)
+        {
+            customData = new CustomData();
+            customData.ThreadNum = 2 * 10;
         }
 
         private static void InnerTaskWithAttachToParent()
@@ -237,6 +295,7 @@ namespace Tasks.Sample
             {
                 taskArray[i] = Task.Factory.StartNew((Object obj) =>
                 {
+                    //int x = (int)obj;
                     var data = new CustomData() { Name = i, CreationTime = DateTime.Now.Ticks };
                     data.ThreadNum = Thread.CurrentThread.ManagedThreadId;
                     Console.WriteLine("Task #{0} created at {1} on thread #{2}.",
@@ -307,7 +366,7 @@ namespace Tasks.Sample
             Task taskA = new Task(() => Console.WriteLine("Hello from taskA."));
             // Start the task.
             taskA.Start();
-
+            
             // Output a message from the calling thread.
             Console.WriteLine("Hello from thread '{0}'.",
                               Thread.CurrentThread.Name);
