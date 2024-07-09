@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait.Sample", "AsyncA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Basics", "EFCore.Basics\EFCore.Basics.csproj", "{3358EF17-D6FA-497C-8696-501B88C63B7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqSamples", "LinqSamples\LinqSamples.csproj", "{B2A1811C-1081-4319-A7CD-593104316612}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3358EF17-D6FA-497C-8696-501B88C63B7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3358EF17-D6FA-497C-8696-501B88C63B7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3358EF17-D6FA-497C-8696-501B88C63B7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A1811C-1081-4319-A7CD-593104316612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A1811C-1081-4319-A7CD-593104316612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A1811C-1081-4319-A7CD-593104316612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A1811C-1081-4319-A7CD-593104316612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
