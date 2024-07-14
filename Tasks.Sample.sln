@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore", "EFCore", "{B1471E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseFirst.Sample", "EFCore\DatabaseFirst.Sample\DatabaseFirst.Sample.csproj", "{F4279AB6-EA15-4C8D-8E5E-B404E97D0492}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst.Sample", "EFCore\CodeFirst.Sample\CodeFirst.Sample.csproj", "{A04A13A0-3C31-4245-95F9-E6734DB303E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,12 +49,17 @@ Global
 		{F4279AB6-EA15-4C8D-8E5E-B404E97D0492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4279AB6-EA15-4C8D-8E5E-B404E97D0492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4279AB6-EA15-4C8D-8E5E-B404E97D0492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04A13A0-3C31-4245-95F9-E6734DB303E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04A13A0-3C31-4245-95F9-E6734DB303E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04A13A0-3C31-4245-95F9-E6734DB303E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04A13A0-3C31-4245-95F9-E6734DB303E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F4279AB6-EA15-4C8D-8E5E-B404E97D0492} = {B1471E84-C354-4C92-9176-77F14ACEF5AF}
+		{A04A13A0-3C31-4245-95F9-E6734DB303E7} = {B1471E84-C354-4C92-9176-77F14ACEF5AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFB06611-D6A8-4EB9-81D7-D6A9B4B3B732}

@@ -41,7 +41,7 @@ namespace EFCore.Basics
             foreach (var item in applicationDbContext.ProductCategories.ToList())
             {
 
-                productCategory.ProductSubcategories.Remove();
+                
                 applicationDbContext.Remove(item);
                 Console.WriteLine($"Id: {item.ProductCategoryID}, Name: {item.Name}");
             }
