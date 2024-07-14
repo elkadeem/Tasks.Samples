@@ -17,6 +17,10 @@ namespace CodeFirst.Sample.Model
 
         }
 
+        public DbSet<Student> Students { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
         public DbSet<Department> Departments { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
@@ -42,10 +46,28 @@ namespace CodeFirst.Sample.Model
                 builder.Property(c => c.Location).HasMaxLength(100);
 
                 builder.Property<DateTime>("UpdatedDate");
+
+                builder.HasMany<Employee>()
+                .WithOne()
+                //.HasForeignKey("DepartmentId");
+                .HasForeignKey(c => c.DepartmentId);
+                
             });
 
             modelBuilder.Entity<Employee>(builder =>
             {
+                builder.OwnsMany(c => c.ShipingAddresses, builder =>
+                {
+                    builder.Property(c => c.City).HasMaxLength(50);
+                    builder.Property(c => c.State).HasMaxLength(50);
+                    builder.Property(c => c.Country).HasMaxLength(50);
+                });
+
+                //builder.HasOne<Department>()
+                //.WithMany()
+                ////.HasForeignKey("DepartmentId");
+                //.HasForeignKey(c => c.DepartmentId);
+
                 builder.Property(c => c.Name).HasMaxLength(100);
                 builder.Property(c => c.CreatetionDate).HasDefaultValueSql("GETDATE()");
 
@@ -59,6 +81,21 @@ namespace CodeFirst.Sample.Model
             modelBuilder.Entity<EmployeeChild>(builder =>
             {
                 builder.HasKey(c => new { c.Serial, c.EmployeeId });
+            });
+
+            modelBuilder.Entity<Student>(builder => {
+
+               builder.HasOne(c => c.Image)
+                .WithOne()
+                .HasForeignKey<StudentImage>(c => c.Id);
+
+                builder.OwnsOne(c => c.Address, a =>
+                {
+                    a.Property(c => c.City).HasColumnName("City").HasMaxLength(50);
+                    a.Property(c => c.State).HasMaxLength(50);
+                    a.Property(c => c.Country).HasMaxLength(50);
+                });
+            
             });
 
 
