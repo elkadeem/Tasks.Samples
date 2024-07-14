@@ -17,6 +17,7 @@ namespace EFCore.Basics
             //optionsBuilder.UseLazyLoadingProxies();
         }
 
+        public DbSet<Department> Departments { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
         public DbSet<ProductSubcategory> ProductSubcategories { get; set; }
@@ -25,6 +26,19 @@ namespace EFCore.Basics
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Department>()
+                .ToTable("Departments", schema: "HumanResources")
+                .Property(c => c.Name).HasColumnName("Name");
+
+            
+            modelBuilder.Entity<Department>(builder => { 
+                builder.ToView("Departments", schema: "HumanResources");
+                builder.Property(c => c.Name).HasColumnName("Name")
+                .HasColumnType("nvarchar").HasMaxLength(50)
+                .HasDefaultValue("Ahmed")
+                ;
+                
+            });
             //modelBuilder.Entity<ProductCategory>()
             //    .HasMany(c => c.ProductSubcategories)
             //    .WithOne(c => c.ProductCategory)
