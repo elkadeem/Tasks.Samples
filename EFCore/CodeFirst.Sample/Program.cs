@@ -19,8 +19,24 @@ namespace CodeFirst.Sample
 
             //Console.WriteLine($"Employee added successfully with id: {employee.Id}");
 
+            var department = dbContext.Departments.Find(1);
+
+            dbContext
+                .Entry(department).Collection(c => c.Employees)
+                .Query().Where(c => c.Name.StartsWith("A"))
+                .Load();
+            
+
             dbContext = new ApplicationDbContext();
-            var firstEmployee = dbContext.Employees.Find(12);
+            // Eager Loading
+            var firstEmployee = dbContext.Employees
+                .Include(c => c.Department).FirstOrDefault(c => c.Id == 12);
+
+            firstEmployee = dbContext.Employees.Find(12);
+
+            dbContext.Entry(firstEmployee).Reference(c => c.Department
+            ).Load();
+
             firstEmployee.Update("Ali1254");
             firstEmployee.UpdateDate = DateTime.Now;
             dbContext.SaveChanges();

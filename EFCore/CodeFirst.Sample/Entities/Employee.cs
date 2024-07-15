@@ -32,7 +32,7 @@ namespace CodeFirst.Sample.Entities
 
         public int DepartmentId { get; set; }
 
-        //public Department Department { get; set; }
+        public Department Department { get; set; }
 
         public List<Address> ShipingAddresses { get; private set; } = new List<Address>();
     }
