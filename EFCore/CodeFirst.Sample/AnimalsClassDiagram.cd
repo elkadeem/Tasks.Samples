@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CodeFirst.Sample.Entities.Animal" Collapsed="true">
+    <Position X="7.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeFirst.Sample.Entities.Cat">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeFirst.Sample.Entities.Dog">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeFirst.Sample.Entities.FarmAnimal" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeFirst.Sample.Entities.Human">
+    <Position X="4" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Pets" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CodeFirst.Sample.Entities.Pet" Collapsed="true">
+    <Position X="9.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Entities\Animals.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
