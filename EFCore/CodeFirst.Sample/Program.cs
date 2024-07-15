@@ -11,71 +11,91 @@ namespace CodeFirst.Sample
             //SampleQueries();
 
             AnimalsDbContextTPH animalsDbContextTPH = new AnimalsDbContextTPH();
-            animalsDbContextTPH.Animals.Add(new Cat("Cat", "A")
-            {
-                Food = Food.CatFood,
-                Vet = "Vet1"
-            });
+            var items = await animalsDbContextTPH.Animals.AsNoTracking().ToListAsync();
+            
 
-            animalsDbContextTPH.Animals.Add(new Dog("Dog", "Toy")
-            {
-                Vet = "Vet2"
-            });
+            Console.WriteLine("TPH: ================================");
+            await AddAnimalsAndHuman(new AnimalsDbContextTPH());
+            await SelectAnimalsAndHuman(new AnimalsDbContextTPH());
 
-            animalsDbContextTPH.Animals.Add(new FarmAnimal("FarmAnimal", "Farm")
-            {
-                Value = 1000,
-            });
+            Console.WriteLine("TPT: ================================");
+            await AddAnimalsAndHuman(new AnimalsDbContextTPT());
+            await SelectAnimalsAndHuman(new AnimalsDbContextTPT());
 
-            animalsDbContextTPH.Pets.Add(new Cat("Cat2", "A")
-            {
-                Food = Food.CatFood,
-                Vet = "Vet1"
-            });
+            Console.WriteLine("TPC: ================================");
+            await AddAnimalsAndHuman(new AnimalsDbContextTPC());
+            await SelectAnimalsAndHuman(new AnimalsDbContextTPC());
 
-            animalsDbContextTPH.Pets.Add(new Dog("Dog2", "Toy")
-            {
-                Vet = "Vet2"
-            });
+            
 
-            animalsDbContextTPH.Humans.Add(new Human("Human")
-            {
-                Food = Food.HumansFood,                
-            });
+        }
 
-            int rows = await animalsDbContextTPH.SaveChangesAsync();
-            Console.WriteLine($"Rows affected: {rows}");
-
-            animalsDbContextTPH = new AnimalsDbContextTPH();
+        public static async Task SelectAnimalsAndHuman(DbContext dbContext)
+        {
             Console.WriteLine("All Animals:");
-            foreach (var animal in animalsDbContextTPH.Animals)
+            foreach (var animal in dbContext.Set<Animal>())
             {
                 Console.WriteLine($"Animal: {animal.Name}, Type: {animal.GetType().Name}");
             }
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("All Pets:");
-            foreach (var pet in animalsDbContextTPH.Pets)
+            foreach (var pet in dbContext.Set<Pet>())
             {
                 Console.WriteLine($"Pet: {pet.Name}, Type: {pet.GetType().Name}");
             }
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("All Cats:");
-            foreach (var pet in animalsDbContextTPH.Pets.OfType<Cat>())
+            foreach (var pet in dbContext.Set<Pet>().OfType<Cat>())
             {
                 Console.WriteLine($"Pet: {pet.Name}, Type: {pet.GetType().Name}");
             }
 
             Console.WriteLine(Environment.NewLine);
             Console.WriteLine("All Humans:");
-            foreach (var human in animalsDbContextTPH.Humans)
+            foreach (var human in dbContext.Set<Human>())
             {
                 Console.WriteLine($"Human: {human.Name}, Type: {human.GetType().Name}");
             }
+        }
 
+        public static async Task AddAnimalsAndHuman(DbContext dbContext)
+        {
+            dbContext.Set<Animal>().Add(new Cat("Cat", "A")
+            {
+                Food = Food.CatFood,
+                Vet = "Vet1"
+            });
 
+            dbContext.Set<Animal>().Add(new Dog("Dog", "Toy")
+            {
+                Vet = "Vet2"
+            });
 
+            dbContext.Set<Animal>().Add(new FarmAnimal("FarmAnimal", "Farm")
+            {
+                Value = 1000,
+            });
+
+            dbContext.Set<Pet>().Add(new Cat("Cat2", "A")
+            {
+                Food = Food.CatFood,
+                Vet = "Vet1"
+            });
+
+            dbContext.Set<Pet>().Add(new Dog("Dog2", "Toy")
+            {
+                Vet = "Vet2"
+            });
+
+            dbContext.Set<Human>().Add(new Human("Human")
+            {
+                Food = Food.HumansFood,
+            });
+
+            int rows = await dbContext.SaveChangesAsync();
+            Console.WriteLine($"Rows affected: {rows}");
         }
 
         private static void SampleQueries()
