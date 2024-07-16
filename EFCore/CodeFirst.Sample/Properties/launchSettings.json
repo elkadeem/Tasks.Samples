@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CodeFirst.Sample": {
+      "commandName": "Project",
+      "commandLineArgs": "--ConnectionStrings:AnimalsDbContextTPCConnection=\"Data Source=(localdb)\\mssqllocaldb;Initial Catalog=DbTPCcommandLine;Integrated Security=True;Trust Server Certificate=True\"",
+      "environmentVariables": {
+        "ConnectionStrings__AnimalsDbContextTPCConnection": "--ConnectionStrings:AnimalsDbContextTPCConnection=\"Data Source=(localdb)\\mssqllocaldb;Initial Catalog=DbTPEnv;Integrated Security=True;Trust Server Certificate=True\""
+      }
+    }
+  }
+}

@@ -12,8 +12,6 @@ namespace EFCore.Basics
             Console.WriteLine($"Is SQL: {applicationDbContext.Database.IsSqlServer}" +
                 $" and can connect: {applicationDbContext.Database.CanConnect()}");
 
-            
-
             var productCategory = new ProductCategory
             {
                 Name = $"Category 14",

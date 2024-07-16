@@ -1,6 +1,7 @@
 ﻿using CodeFirst.Sample.Entities;
 using CodeFirst.Sample.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CodeFirst.Sample
 {
@@ -10,21 +11,33 @@ namespace CodeFirst.Sample
         {
             //SampleQueries();
 
-            AnimalsDbContextTPH animalsDbContextTPH = new AnimalsDbContextTPH();
+            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddJsonFile("appsettings.json", false)
+                .AddEnvironmentVariables()
+                .AddCommandLine(args);            
+
+            IConfigurationRoot configurationRoot =  configurationBuilder.Build();
+
+            Console.WriteLine(configurationRoot.GetConnectionString("AnimalsDbContextTPCConnection"));
+
+            DbContextOptionsBuilder<AnimalsDbContextTPC> optionsBuilder = new DbContextOptionsBuilder<AnimalsDbContextTPC>();
+            optionsBuilder.UseSqlServer(configurationRoot.GetConnectionString("AnimalsDbContextTPCConnection"));
+
+            AnimalsDbContextTPH animalsDbContextTPH = new AnimalsDbContextTPH(optionsBuilder.Options);
             var items = await animalsDbContextTPH.Animals.AsNoTracking().ToListAsync();
             
 
-            Console.WriteLine("TPH: ================================");
-            await AddAnimalsAndHuman(new AnimalsDbContextTPH());
-            await SelectAnimalsAndHuman(new AnimalsDbContextTPH());
+            //Console.WriteLine("TPH: ================================");
+            //await AddAnimalsAndHuman(new AnimalsDbContextTPH());
+            //await SelectAnimalsAndHuman(new AnimalsDbContextTPH());
 
-            Console.WriteLine("TPT: ================================");
-            await AddAnimalsAndHuman(new AnimalsDbContextTPT());
-            await SelectAnimalsAndHuman(new AnimalsDbContextTPT());
+            //Console.WriteLine("TPT: ================================");
+            //await AddAnimalsAndHuman(new AnimalsDbContextTPT());
+            //await SelectAnimalsAndHuman(new AnimalsDbContextTPT());
 
-            Console.WriteLine("TPC: ================================");
-            await AddAnimalsAndHuman(new AnimalsDbContextTPC());
-            await SelectAnimalsAndHuman(new AnimalsDbContextTPC());
+            //Console.WriteLine("TPC: ================================");
+            //await AddAnimalsAndHuman(new AnimalsDbContextTPC());
+            //await SelectAnimalsAndHuman(new AnimalsDbContextTPC());
 
             
 

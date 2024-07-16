@@ -9,6 +9,12 @@ namespace CodeFirst.Sample.Model
         {
         }
 
+        public AnimalsDbContextTPC(DbContextOptions<AnimalsDbContextTPC> options)
+            : base(options)
+        {
+
+        }
+
         public DbSet<Animal> Animals { get; set; }
 
         public DbSet<Pet> Pets { get; set; }
